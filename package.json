@@ -1,8 +1,9 @@
 {
   "name": "@lllllxt/event-bus",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "event-bus",
   "main": "event-bus.js",
+  "typings": "types/event-bus.d.ts",
   "scripts": {
     "start": "npm run build && npm run uglify && npm run declaration && npm run test",
     "build": "rollup -c build/rollup.config.js -o event-bus.js",
