@@ -1,0 +1,31 @@
+{
+  "name": "@lllllxt/event-bus",
+  "version": "1.0.0",
+  "description": "event-bus",
+  "main": "event-bus.js",
+  "scripts": {
+    "start": "npm run build && npm run uglify && npm run declaration && npm run test",
+    "build": "rollup -c build/rollup.config.js -o event-bus.js",
+    "uglify": "rollup -c build/rollup.config.js -o event-bus.min.js --uglify",
+    "test": "jest",
+    "declaration": "tsc"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "@babel/core": "^7.9.0",
+    "@babel/preset-env": "^7.9.5",
+    "@babel/preset-typescript": "^7.8.3",
+    "babel-jest": "^25.4.0",
+    "jest": "^25.4.0",
+    "rollup": "^1.32.1",
+    "rollup-plugin-babel": "^4.4.0",
+    "rollup-plugin-uglify": "^6.0.4",
+    "typescript": "^3.9.6"
+  },
+  "files": [
+    "types/",
+    "event-bus.js",
+    "event-bus.min.js"
+  ]
+}
