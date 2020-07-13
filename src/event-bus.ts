@@ -9,12 +9,12 @@ class EventBus {
     this.listener = new Map(entries)
   }
   on(eventName: String, fn: Function, group: String = 'default') {
-    if (typeof fn !== 'function') return false
+    if (typeof fn !== 'function') return
     if (!this.listener.has(eventName)) this.listener.set(eventName, []) // 初始化事件列表
     this.listener.get(eventName).push({ fn, group })
   }
   once(eventName: String, fn: Function, group: String = 'default') {
-    if (typeof fn !== 'function') return false
+    if (typeof fn !== 'function') return
     const that = this
     function onceFn() {
       that.off(eventName, onceFn, group)
@@ -22,7 +22,7 @@ class EventBus {
     }
     this.on(eventName, onceFn, group)
   }
-  off(eventName: String, fnOrGroup: Function | String, group: String) {
+  off(eventName?: String, fnOrGroup?: Function | String, group?: String) {
     const _lser = this.listener.get(eventName) || []
     let _filterLser = null
     if (!eventName) {

@@ -1,7 +1,7 @@
 (function (global, factory) {
   typeof exports === 'object' && typeof module !== 'undefined' ? module.exports = factory() :
   typeof define === 'function' && define.amd ? define(factory) :
-  (global = global || self, global['event-bus'] = factory());
+  (global = global || self, global.EventBus = factory());
 }(this, (function () { 'use strict';
 
   function _classCallCheck(instance, Constructor) {
@@ -37,7 +37,7 @@
       key: "on",
       value: function on(eventName, fn) {
         var group = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'default';
-        if (typeof fn !== 'function') return false;
+        if (typeof fn !== 'function') return;
         if (!this.listener.has(eventName)) this.listener.set(eventName, []); // 初始化事件列表
 
         this.listener.get(eventName).push({
@@ -49,7 +49,7 @@
       key: "once",
       value: function once(eventName, fn) {
         var group = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : 'default';
-        if (typeof fn !== 'function') return false;
+        if (typeof fn !== 'function') return;
         var that = this;
 
         function onceFn() {

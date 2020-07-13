@@ -1,6 +1,6 @@
 {
   "name": "@lllllxt/event-bus",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "event-bus",
   "main": "event-bus.js",
   "scripts": {
@@ -10,8 +10,16 @@
     "test": "jest",
     "declaration": "tsc"
   },
-  "author": "",
-  "license": "ISC",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lllllxt/event-bus.git"
+  },
+  "bugs": {
+    "url": "https://github.com/lllllxt/event-bus/issues"
+  },
+  "homepage": "https://github.com/lllllxt/event-bus#readme",
+  "author": "lllllxt",
+  "license": "MIT",
   "devDependencies": {
     "@babel/core": "^7.9.0",
     "@babel/preset-env": "^7.9.5",

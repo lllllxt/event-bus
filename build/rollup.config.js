@@ -8,7 +8,7 @@ export default {
     output: [{
         file: 'event-bus.js',
         format: 'umd',
-        name: 'event-bus'
+        name: 'EventBus'
     }],
     plugins: [
         babel({
