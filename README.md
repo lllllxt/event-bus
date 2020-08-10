@@ -24,8 +24,7 @@ const EventBus = request('@lllllxt/event-bus')
 ---|---
 EventBus.on(eventName: String, fn: Function, group?: String = 'default') | 订阅
 EventBus.once(eventName: String, fn: Function, group?: String = 'default') | 订阅一次
-[EventBus.off(eventName?: String, fnOrGroup?: Function  String, group?: String)](#EventBus.off)| 取消订阅
-EventBus.removeGroup(group: String) | 移除分组订阅
+[EventBus.off(eventName?: String, fnOrGroup?: Function  String, group?: String)](#eventbusoff)| 取消订阅
 EventBus.emit(eventName: String, ...args: any[]) | 广播事件
 
 ###### EventBus.off
