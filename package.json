@@ -1,6 +1,6 @@
 {
   "name": "@lllllxt/event-bus",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "event-bus",
   "main": "event-bus.js",
   "typings": "types/event-bus.d.ts",

@@ -22,6 +22,15 @@ class EventBus {
     }
     this.on(eventName, onceFn, group)
   }
+  /**
+   * 渐进式精准取消订阅
+   * eventName为空时取消全部订阅；
+   * fnOrGroup为空时取消所有eventName订阅；
+   * group为空时取消匹配到fnOrGroup的所有eventName订阅。
+   * @param eventName
+   * @param fnOrGroup
+   * @param group
+   */
   off(eventName?: String, fnOrGroup?: Function | String, group?: String) {
     const _lser = this.listener.get(eventName) || []
     let _filterLser = null
@@ -47,6 +56,18 @@ class EventBus {
     } else {
       this.listener.delete(eventName)
     }
+  }
+  /** 整个分组移除监听 */
+  removeGroup(group: String) {
+    if (!group) return false
+    this.listener.forEach((v, eventName) => {
+      const _filterLser = v.filter((listener) => listener.group !== group)
+      if (_filterLser.length > 0) {
+        this.listener.set(eventName, _filterLser)
+      } else {
+        this.listener.delete(eventName)
+      }
+    })
   }
   emit(eventName: String, ...args: any[]) {
     const _lser = this.listener.get(eventName) || []

@@ -59,6 +59,16 @@
 
         this.on(eventName, onceFn, group);
       }
+      /**
+       * 渐进式精准取消订阅
+       * eventName为空时取消全部订阅；
+       * fnOrGroup为空时取消所有eventName订阅；
+       * group为空时取消匹配到fnOrGroup的所有eventName订阅。
+       * @param eventName
+       * @param fnOrGroup
+       * @param group
+       */
+
     }, {
       key: "off",
       value: function off(eventName, fnOrGroup, group) {
@@ -96,10 +106,30 @@
           this.listener.delete(eventName);
         }
       }
+      /** 整个分组移除监听 */
+
+    }, {
+      key: "removeGroup",
+      value: function removeGroup(group) {
+        var _this = this;
+
+        if (!group) return false;
+        this.listener.forEach(function (v, eventName) {
+          var _filterLser = v.filter(function (listener) {
+            return listener.group !== group;
+          });
+
+          if (_filterLser.length > 0) {
+            _this.listener.set(eventName, _filterLser);
+          } else {
+            _this.listener.delete(eventName);
+          }
+        });
+      }
     }, {
       key: "emit",
       value: function emit(eventName) {
-        var _this = this;
+        var _this2 = this;
 
         for (var _len = arguments.length, args = new Array(_len > 1 ? _len - 1 : 0), _key = 1; _key < _len; _key++) {
           args[_key - 1] = arguments[_key];
@@ -110,7 +140,7 @@
         _lser.forEach(function (listener) {
           var _listener$fn;
 
-          (_listener$fn = listener.fn).call.apply(_listener$fn, [_this].concat(args));
+          (_listener$fn = listener.fn).call.apply(_listener$fn, [_this2].concat(args));
         });
       }
     }]);
